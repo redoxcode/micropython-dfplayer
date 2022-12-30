@@ -1,7 +1,7 @@
 ## Description
 A micropython library to control the [DFPlayer mini](https://www.dfrobot.com/product-1121.html) mp3 player module.
 
-This library focuses on the most essential functions. Some advanced functions of the dfmini, like the equalizer modes are not implemented yet.
+This library focuses on the most essential functions. Some advanced functions of the DFPlayer, like the equalizer modes are not implemented yet.
 
 Further this library is made to use the folders function of the dfmini. You can use up to 99 folders and 255 files per folder.
 The files on your micro sd card need to be structured like this:
@@ -22,7 +22,7 @@ The files on your micro sd card need to be structured like this:
 	└── ...
 
 There should be no gaps in the numbering scheme.
-It might be best to prepare the whole file structure on your harddrive first and then copy them in one go on a freshly formated micro sd card, as the dfmini might get confused from artifacts left on the sd cards filesystem.
+It might be best to prepare the whole file structure on your harddrive first and then copy them in one go on a freshly formated micro sd card, as the DFPlayer might get confused from artifacts left on the sd cards filesystem.
 You can use the files in [/sample_files](https://github.com/redoxcode/micropython-dfplayer/tree/main/sample_files) to test your module.
 
 Sometimes the module isn't able to keep up if you try to send commands to fast, so some delay between the commands is needed.
