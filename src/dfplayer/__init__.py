@@ -69,23 +69,3 @@ class DFPlayer:
         if in_bytes[3]!=78:
             return -1
         return in_bytes[6]
-
-
-df = DFPlayer(1,4,5)
-time.sleep(0.2)
-df.volume(30)
-#df.reset()
-time.sleep(1.0)
-print(df.get_files_in_folder(0))
-time.sleep(0.2)
-print(df.get_files_in_folder(1))
-time.sleep(0.2)
-print(df.get_files_in_folder(2))
-time.sleep(0.5)
-print(df.get_files_in_folder(3))
-time.sleep(0.5)
-print(df.get_files_in_folder(4))
-
-#df.play(1,1)
-#time.sleep(0.5)
-#df.stop()
