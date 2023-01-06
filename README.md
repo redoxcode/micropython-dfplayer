@@ -1,3 +1,4 @@
+[![pypi version shield](https://img.shields.io/pypi/v/micropython-dfplayer)](https://pypi.org/project/micropython-dfplayer/) [![pypi downloads per month shield](https://img.shields.io/pypi/dm/micropython-dfplayer?color=brightgreen)](https://pypi.org/project/micropython-dfplayer/)
 ## Description
 A micropython library to control the [DFPlayer mini](https://www.dfrobot.com/product-1121.html) mp3 player module.
 
