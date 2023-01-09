@@ -9,11 +9,11 @@ class DFPlayer:
                 
         #not all boards can set the pins for the uart channel
         if tx_pin_id or rx_pin_id:
-		    self.tx_pin=machine.Pin(tx_pin_id,machine.Pin.OUT)
-		    self.rx_pin=machine.Pin(rx_pin_id,machine.Pin.IN)     
-        	self.uart.init(9600, bits=8, parity=None, stop=1, tx=self.tx_pin, rx=self.rx_pin)
+            self.tx_pin=machine.Pin(tx_pin_id,machine.Pin.OUT)
+            self.rx_pin=machine.Pin(rx_pin_id,machine.Pin.IN)     
+            self.uart.init(9600, bits=8, parity=None, stop=1, tx=self.tx_pin, rx=self.rx_pin)
         else:
-        	self.uart.init(9600, bits=8, parity=None, stop=1)
+            self.uart.init(9600, bits=8, parity=None, stop=1)
         
     def flush(self):
         while self.uart.any():
@@ -23,7 +23,10 @@ class DFPlayer:
         self.flush()
         self.send_cmd(cmd,param1,param2)
         time.sleep(0.05)
-        return self.uart.read()
+        in_bytes = self.uart.read()
+        if not in_bytes:
+            return bytes(10)
+        return in_bytes
     
     def send_cmd(self,cmd,param1=0,param2=0):
         out_bytes = bytearray(10)
@@ -53,19 +56,19 @@ class DFPlayer:
         self.send_cmd(15,folder,file)
         
     def volume(self,vol):
-        df.send_cmd(6,0,vol)
+        self.send_cmd(6,0,vol)
     
     def reset(self):
-        df.send_cmd(12,0,1)
+        self.send_cmd(12,0,1)
         
     def is_playing(self):
-        return df.send_query(66)[6]
+        return self.send_query(66)[6]
     
     def get_volume(self):
-        return df.send_query(67)[6]
+        return self.send_query(67)[6]
 
     def get_files_in_folder(self,folder):
-        in_bytes = df.send_query(78,0,folder)
+        in_bytes = self.send_query(78,0,folder)
         if in_bytes[3]!=78:
             return -1
         return in_bytes[6]
