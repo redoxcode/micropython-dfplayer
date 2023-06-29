@@ -28,6 +28,12 @@ You can use the files in [/sample_files](https://github.com/redoxcode/micropytho
 
 Sometimes the module isn't able to keep up if you try to send commands to fast, so some delay between the commands is needed.
 
+## Connection
+- Connect GND of the DFPlayer to the GND of your microcontroller (and your power source)
+- Connect VCC of the DFPlayer to 3.3V / 5V
+- Connect the RX pin of the DFPlayer to the TX pin of your microcontroller. This is used to send data to the DFPlayer mini.
+- Connect the TX pin of the DFPlayer to the RX pin of your microcontroller. This is optional and only needed if you want to return data from the DFPlayer (as in ```get_files_in_folder()```, ```get_volume()``` or ```ìs_playing()```)
+
 ## Examples
 
 ### Play a file from a folder
