@@ -34,6 +34,8 @@ Sometimes the module isn't able to keep up if you try to send commands to fast, 
 - Connect the RX pin of the DFPlayer to the TX pin of your microcontroller. This is used to send data to the DFPlayer mini.
 - Connect the TX pin of the DFPlayer to the RX pin of your microcontroller. This is optional and only needed if you want to return data from the DFPlayer (as in ```get_files_in_folder()```, ```get_volume()``` or ```ìs_playing()```)
 
+![DFPlayer mini pinout](https://dfimg.dfrobot.com/nobody/wiki/77048a25b85b6e29438244020e7237e1.png)
+
 ## Examples
 
 ### Play a file from a folder
