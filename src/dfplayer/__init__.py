@@ -73,7 +73,10 @@ class DFPlayer:
         return in_bytes[6]
     
     def get_volume(self):
-        return self.send_query(67)[6]
+        in_bytes = self.send_query(67)
+        if in_bytes==-1 or in_bytes[3]!=67:
+            return -1
+        return in_bytes[6]
 
     def get_files_in_folder(self,folder):
         in_bytes = self.send_query(78,0,folder)
