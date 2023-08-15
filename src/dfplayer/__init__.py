@@ -16,16 +16,21 @@ class DFPlayer:
             self.uart.init(9600, bits=8, parity=None, stop=1)
         
     def flush(self):
-        while self.uart.any():
+        self.uart.flush()
+        if self.uart.any():
             self.uart.read()
         
-    def send_query(self,cmd,param1=0,param2=0):  
-        self.flush()
-        self.send_cmd(cmd,param1,param2)
-        time.sleep(0.05)
-        in_bytes = self.uart.read()
-        if not in_bytes:
-            return bytes(10)
+    def send_query(self,cmd,param1=0,param2=0):
+        retry=True
+        while (retry):
+            self.flush()
+            self.send_cmd(cmd,param1,param2)
+            time.sleep(0.05)
+            in_bytes = self.uart.read()
+            if not in_bytes: #timeout
+                return -1
+            if len(in_bytes)==10 and in_bytes[1]==255 and in_bytes[9]==239:
+                retry=False
         return in_bytes
     
     def send_cmd(self,cmd,param1=0,param2=0):
@@ -62,13 +67,22 @@ class DFPlayer:
         self.send_cmd(12,0,1)
         
     def is_playing(self):
-        return self.send_query(66)[6]
+        in_bytes = self.send_query(66)
+        if in_bytes==-1 or in_bytes[5]!=2:
+            return -1
+        return in_bytes[6]
     
     def get_volume(self):
-        return self.send_query(67)[6]
+        in_bytes = self.send_query(67)
+        if in_bytes==-1 or in_bytes[3]!=67:
+            return -1
+        return in_bytes[6]
 
     def get_files_in_folder(self,folder):
         in_bytes = self.send_query(78,0,folder)
-        if in_bytes[3]!=78:
+        if in_bytes==-1:
             return -1
+        if in_bytes[3]!=78:
+            return 0
         return in_bytes[6]
+

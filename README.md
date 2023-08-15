@@ -28,6 +28,14 @@ You can use the files in [/sample_files](https://github.com/redoxcode/micropytho
 
 Sometimes the module isn't able to keep up if you try to send commands to fast, so some delay between the commands is needed.
 
+## Connection
+- Connect GND of the DFPlayer to the GND of your microcontroller (and your power source)
+- Connect VCC of the DFPlayer to 3.3V / 5V
+- Connect the RX pin of the DFPlayer to the TX pin of your microcontroller. This is used to send data to the DFPlayer mini.
+- Connect the TX pin of the DFPlayer to the RX pin of your microcontroller. This is optional and only needed if you want to return data from the DFPlayer (as in ```get_files_in_folder()```, ```get_volume()``` or ```ìs_playing()```)
+
+![DFPlayer mini pinout](https://dfimg.dfrobot.com/nobody/wiki/77048a25b85b6e29438244020e7237e1.png)
+
 ## Examples
 
 ### Play a file from a folder
@@ -44,7 +52,7 @@ time.sleep(0.2)
 df.play(1,1)
 ```
 ### Find the number of files in a folder
-If a folder doesn't exist, get_files_in_folder will return -1
+If a folder doesn't exist, get_files_in_folder will return 0
 ```Python
 import time
 from dfplayer import DFPlayer
@@ -71,17 +79,17 @@ print(df.get_files_in_folder(4))
 - stop all playback
 
 ```volume(vol)```
-- set the volume of the module
+- set the volume of the module.
 - vol: Volume of the module. The range is 0 to 30. The DFPlayer doesn't remember these settings
 
 ```get_volume()```
-- returns the current volume setting of the module
+- returns the current volume setting of the module or -1 on communication error
 
 ```ìs_playing()```
-- returns if currently some playback is running
+- returns if currently some playback is running or -1 on communication error
 
 ```get_files_in_folder(folder)```
-- returns the number of files in a folder or -1 if the folder doesn't exist
+- returns the number of files in a folder or 0 if the folder doesn't exist or -1 on communication error
 - folder: folder to get the number of files in
 
 ```reset()```
