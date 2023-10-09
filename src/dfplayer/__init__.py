@@ -9,9 +9,7 @@ class DFPlayer:
                 
         #not all boards can set the pins for the uart channel
         if tx_pin_id or rx_pin_id:
-            self.tx_pin=machine.Pin(tx_pin_id,machine.Pin.OUT)
-            self.rx_pin=machine.Pin(rx_pin_id,machine.Pin.IN)     
-            self.uart.init(9600, bits=8, parity=None, stop=1, tx=self.tx_pin, rx=self.rx_pin)
+            self.uart.init(9600, bits=8, parity=None, stop=1, tx=tx_pin_id, rx=rx_pin_id)
         else:
             self.uart.init(9600, bits=8, parity=None, stop=1)
         
