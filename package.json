@@ -1,7 +1,7 @@
 {
   "urls": [
-    ["servo/__init__.py", "github:redoxcode/micropython-dfplayer/src/dfplayer/__init__.py"],
-    ["servo/__main__.py", "github:redoxcode/micropython-dfplayer/src/dfplayer/__main__.py"]
+    ["dfplayer/__init__.py", "github:redoxcode/micropython-dfplayer/src/dfplayer/__init__.py"],
+    ["dfplayer/__main__.py", "github:redoxcode/micropython-dfplayer/src/dfplayer/__main__.py"]
   ],
   "deps": [
   ],
