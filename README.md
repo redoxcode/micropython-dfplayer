@@ -85,7 +85,7 @@ print(df.get_files_in_folder(4))
 ```volume_up()```
 - increase the volume by 1 up to the maximum of 30.
 
-```volume_up()```
+```volume_down()```
 - decrease the volume by 1 down to the minimum of 1.
 
 ```get_volume()```
