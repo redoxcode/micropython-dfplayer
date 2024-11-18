@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "micropython-dfplayer"
-version = "1.0.4"
+version = "1.0.5"
 description = "Library to use the DFPlayer mini mp3 player module with micropython"
 readme = "README.md"
 authors = [{ name = "redoxcode", email = "redoxcode@github.com" }]
