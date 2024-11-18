@@ -60,6 +60,12 @@ class DFPlayer:
         
     def volume(self,vol):
         self.send_cmd(6,0,vol)
+        
+    def volume_up(self):
+        self.send_cmd(4,0,0)
+
+    def volume_down(self):
+        self.send_cmd(5,0,0)
     
     def reset(self):
         self.send_cmd(12,0,1)

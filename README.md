@@ -82,6 +82,12 @@ print(df.get_files_in_folder(4))
 - set the volume of the module.
 - vol: Volume of the module. The range is 0 to 30. The DFPlayer doesn't remember these settings
 
+```volume_up()```
+- increase the volume by 1 up to the maximum of 30.
+
+```volume_down()```
+- decrease the volume by 1 down to the minimum of 1.
+
 ```get_volume()```
 - returns the current volume setting of the module or -1 on communication error
 
