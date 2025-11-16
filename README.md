@@ -36,6 +36,17 @@ Sometimes the module isn't able to keep up if you try to send commands to fast, 
 
 ![DFPlayer mini pinout](https://dfimg.dfrobot.com/nobody/wiki/77048a25b85b6e29438244020e7237e1.png)
 
+## Install
+Place the library in the **lib** folder of your device (create the folder if it doesn't exist yet).
+
+It should look like this:
+
+- **lib**
+   - **dfplayer**
+      - **\_\_init\_\_.py**
+      - **\_\_main\_\_.py**
+
+
 ## Examples
 
 ### Play a file from a folder
